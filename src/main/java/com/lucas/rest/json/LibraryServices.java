@@ -20,10 +20,7 @@ public class LibraryServices {
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/posting")
     public String postBook(Book book) {
-
-        Book newBook = bookCreation ( book );
-
-        return BookRepository.getInstance ( context ).add ( newBook );
+        return BookRepository.getInstance ( context ).add ( book );
     }
 
     @PUT
@@ -32,15 +29,14 @@ public class LibraryServices {
     @Path("/updating")
     public String updateBook(Book book) {
         return BookRepository.getInstance ( context ).update ( book );
-
     }
 
     @DELETE
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path ( "/delete" )
-    public String deleteBook (Book book) {
-        return BookRepository.getInstance ( context ).delete ( book );
+    public String deleteBook (int id) {
+        return BookRepository.getInstance ( context ).delete ( id );
     }
 
     @GET
@@ -51,16 +47,11 @@ public class LibraryServices {
         return BookRepository.getInstance ( context ).list ();
     }
 
-    private Book bookCreation (Book book){
-        Book newBook = new Book ();
-        newBook.setId ( book.getId () );
-        newBook.setIsbn (book.getIsbn ());
-        newBook.setTitle ( book.getTitle () );
-        newBook.setAuthor ( book.getAuthor () );
-        newBook.setPublisher ( book.getPublisher () );
-        newBook.setDescription ( book.getDescription () );
-
-        return newBook;
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path ( "/getid" )
+    public Book getIdBook (int id){
+        return BookRepository.getInstance ( context ).get (id);
     }
-
 }
