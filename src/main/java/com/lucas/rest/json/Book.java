@@ -2,58 +2,58 @@ package com.lucas.rest.json;
 
 public class Book implements Cloneable {
 
-    private int id;
+    private Integer id;
     private String title;
     private String description;
     private String isbn;
     private String author;
     private String publisher;
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
-    public String getIsbn() {
+    String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
-    public String getAuthor() {
+    String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    void setAuthor(String author) {
         this.author = author;
     }
 
-    public String getPublisher() {
+    String getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
