@@ -19,7 +19,7 @@ public class LibraryServices {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/posting")
-    public String postBook(Book book) {
+    public Messages postBook(Book book) {
         return BookRepository.getInstance ( context ).add ( book );
     }
 
@@ -27,7 +27,7 @@ public class LibraryServices {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/updating")
-    public String updateBook(Book book) {
+    public Messages updateBook(Book book) {
         return BookRepository.getInstance ( context ).update ( book );
     }
 
@@ -35,7 +35,7 @@ public class LibraryServices {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path ( "/delete" )
-    public String deleteBook (int id) {
+    public Messages deleteBook (int id) {
         return BookRepository.getInstance ( context ).delete ( id );
     }
 

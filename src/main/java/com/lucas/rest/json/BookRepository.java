@@ -1,6 +1,6 @@
 package com.lucas.rest.json;
 
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -23,12 +23,18 @@ public class BookRepository {
                 (instance = new BookRepository()): instance;
     }
 
-    public String add(Book b) {
+    public Messages add(Book b) {
         if (map.get ( b.getId ()) != null ) {
-            return "Already exists, please use a different Id value";
+            Messages message = new Messages ();
+            message.setMessage ("Already exists, please use a different Id value");
+            message.setEstatus ( "Process no completed" );
+            return message;
         }
         map.put(b.getId(), b);
-        return   "Added successfully" ;
+        Messages message = new Messages ();
+        message.setMessage ("Added successfully");
+        message.setEstatus ( "Process completed" );
+        return message;
 
     }
 
@@ -41,22 +47,36 @@ public class BookRepository {
         return bookList;
     }
 
-    public String update(Book b) {
+    public Messages update(Book b) {
         if(map.containsKey(b.getId()))
         {
             map.put(b.getId(), b.clone());
-            return ("Update completed");
+            Messages message = new Messages ();
+            message.setMessage ("Update completed");
+            message.setEstatus ( "Process completed" );
+            return message;
+
         }
-        return ("key not found");
+        Messages message = new Messages ();
+        message.setMessage ("key not found");
+        message.setEstatus ( "Process no completed" );
+        return message;
     }
 
-    public String delete(int id)  {
+    public Messages delete(int id)  {
 
         if (map.get ( id ) == null) {
-            return "No book found";
+            Messages message = new Messages ();
+            message.setMessage ("No record found");
+            message.setEstatus ( "Process no completed" );
+            return message;
         }
+
         map.remove ( id);
-        return ( "Book deleted successfully" );
+        Messages message = new Messages ();
+        message.setMessage ("Record deleted successfully");
+        message.setEstatus ( "Process completed" );
+        return message;
     }
 
     public Book get(int id)  {
