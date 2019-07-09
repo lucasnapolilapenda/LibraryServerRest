@@ -1,8 +1,7 @@
 package com.lucas.rest.json;
 
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.ws.rs.core.UriInfo;
@@ -38,9 +37,9 @@ public class BookRepository {
 
     }
 
-    public List<Book> list()  {
+    public ArrayList<Book> list()  {
         Set <Integer> ids = map.keySet ();
-        LinkedList <Book> bookList = new LinkedList <> (  );
+        ArrayList <Book> bookList = new ArrayList <> (  );
         for(Integer id : ids){
             bookList.add (map.get(id).clone ()) ;
         }
@@ -79,7 +78,13 @@ public class BookRepository {
         return message;
     }
 
-    public Book get(int id)  {
+    public Object get(int id)  {
+        if (map.get ( id ) == null) {
+            Messages message = new Messages ();
+            message.setMessage ("No record found");
+            message.setEstatus ( "Process no completed" );
+            return message;
+        }
             return map.get ( id );
     }
 

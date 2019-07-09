@@ -4,6 +4,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/book")
@@ -43,15 +44,15 @@ public class LibraryServices {
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path ( "/list" )
-    public List <Book> listBook () {
+    public ArrayList <Book> listBook () {
         return BookRepository.getInstance ( context ).list ();
     }
 
-    @GET
+    @PUT
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path ( "/getid" )
-    public Book getIdBook (int id){
+    public Object getIdBook (int id){
         return BookRepository.getInstance ( context ).get (id);
     }
 }
