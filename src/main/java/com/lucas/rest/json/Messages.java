@@ -1,5 +1,9 @@
 package com.lucas.rest.json;
 
+/**
+ * Represents all the messages
+ */
+
 public class Messages {
     String message;
     String estatus;

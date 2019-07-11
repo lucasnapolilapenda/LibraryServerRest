@@ -1,5 +1,12 @@
 package com.lucas.rest.json;
 
+/** Library Solos Rest.
+ * @author Lucas Napoli
+ * @author https://github.com/lucasnapolilapenda/LibraryServerRest
+ * @version 1.3
+ * @since 1.0
+ */
+
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,10 +20,18 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.ws.rs.core.UriInfo;
 
+/**
+ * Represents Repository behaviour
+ */
+
 
 public class BookRepository {
 
     private ConcurrentHashMap<Integer, Book> map;
+
+    /**
+     * Book Repository Instance
+     */
 
     private BookRepository() {
             map = new ConcurrentHashMap <Integer, Book> ( );
@@ -24,10 +39,22 @@ public class BookRepository {
 
     private static BookRepository instance = null;
 
+    /**
+     * Book Repository Instance
+     * @param context UriInfo for Instance
+     * @return Instance
+     */
+
     public static BookRepository getInstance(UriInfo context){
         return instance == null && context != null?
                 (instance = new BookRepository()): instance;
     }
+
+    /**
+     * To map Book Object
+     * @param b to ass to add Book to map
+     * @return message to Client
+     */
 
     public Messages add(Book b) {
         repoReader ();
@@ -48,6 +75,11 @@ public class BookRepository {
 
     }
 
+    /**
+     * To map Book Object
+     * @return Array list to Client
+     */
+
     public ArrayList<Book> list()  {
         repoReader ();
         Set <Integer> ids = map.keySet ();
@@ -58,6 +90,12 @@ public class BookRepository {
         map.clear ();
         return bookList;
     }
+
+    /**
+     * To map Book Object
+     * @param b book
+     * @return Message to Client
+     */
 
     public Messages update(Book b) {
         repoReader ();
@@ -78,6 +116,12 @@ public class BookRepository {
         return message;
     }
 
+    /**
+     * To map Book Object
+     * @param id ID information
+     * @return Message to Client
+     */
+
     public Messages delete(int id)  {
         repoReader ();
         if (map.get ( id ) == null) {
@@ -96,6 +140,13 @@ public class BookRepository {
         return message;
     }
 
+    /**
+     * To map Book Object
+     * @param id ID information
+     * @return Message to Client
+     * @return book if book exists
+     */
+
     public Object get(int id)  {
         repoReader ();
         if (map.get ( id ) == null) {
@@ -108,6 +159,11 @@ public class BookRepository {
             map.clear ();
             return book;
     }
+
+    /**
+     * Save in a json Document
+     * @param map map creation
+     */
 
     public void repoSaver (ConcurrentHashMap<Integer, Book> map) {
 
@@ -130,7 +186,7 @@ public class BookRepository {
             }
 
         try {
-            FileWriter file = new FileWriter ("/Volumes/FILES/Projects/LibraryServerRest/src/main/library.json");
+            FileWriter file = new FileWriter ("library.json");
             file.write(jsonString );
             file.flush();
             file.close();
@@ -140,9 +196,13 @@ public class BookRepository {
         System.out.println ( jsonString );
     }
 
+    /**
+     * Read from a json Document
+     */
+
     public void repoReader () {
         try {
-            File file = new File ("/Volumes/FILES/Projects/LibraryServerRest/src/main/library.json");
+            File file = new File ("library.json");
 
             ObjectMapper objectMapper = new ObjectMapper ( );
             Book [] arrayBook = objectMapper.readValue (file ,Book[].class);

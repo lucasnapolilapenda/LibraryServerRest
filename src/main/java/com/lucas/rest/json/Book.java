@@ -1,5 +1,15 @@
 package com.lucas.rest.json;
 
+/** Library Solos Rest.
+ * @author Lucas Napoli
+ * @author https://github.com/lucasnapolilapenda/LibraryServerRest
+ * @version 1.3
+ * @since 1.0
+ */
+
+/**
+ * Represents all the book information
+ */
 public class Book implements Cloneable {
 
     private int id;
