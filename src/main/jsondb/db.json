@@ -1,0 +1,15 @@
+[ {
+  "id" : 1,
+  "title" : "Java 11 - A nightmare",
+  "description" : "Dont use Java 11",
+  "isbn" : "343334533",
+  "author" : "Freddy Kruger",
+  "publisher" : "Json"
+}, {
+  "id" : 2,
+  "title" : "El Principito 2 - El retorno",
+  "description" : "El libro preferido de la hermosa",
+  "isbn" : "1111111111",
+  "author" : "Antonio",
+  "publisher" : "Veros"
+} ]

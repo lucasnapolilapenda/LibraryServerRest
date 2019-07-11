@@ -186,7 +186,7 @@ public class BookRepository {
             }
 
         try {
-            FileWriter file = new FileWriter ("library.json");
+            FileWriter file = new FileWriter ("/Volumes/FILES/Projects/LibraryServerRest/src/main/jsondb/db.json");
             file.write(jsonString );
             file.flush();
             file.close();
@@ -202,7 +202,7 @@ public class BookRepository {
 
     public void repoReader () {
         try {
-            File file = new File ("library.json");
+            File file = new File ("/Volumes/FILES/Projects/LibraryServerRest/src/main/jsondb/db.json");
 
             ObjectMapper objectMapper = new ObjectMapper ( );
             Book [] arrayBook = objectMapper.readValue (file ,Book[].class);
