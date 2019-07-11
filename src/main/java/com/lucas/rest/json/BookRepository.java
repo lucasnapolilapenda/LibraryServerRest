@@ -5,11 +5,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -41,12 +39,11 @@ public class BookRepository {
         }
 
         map.put(b.getId(), b);
-        repoSaver (map);
         Messages message = new Messages ();
         message.setMessage ("Added successfully");
         message.setEstatus ( "Process completed" );
-        System.out.println ( map.get ( b.getId () ).getId () );
-
+        repoSaver (map);
+        map.clear ();
         return message;
 
     }
@@ -70,13 +67,14 @@ public class BookRepository {
             Messages message = new Messages ();
             message.setMessage ("Update completed");
             message.setEstatus ( "Process completed" );
+            repoSaver ( map );
+            map.clear ();
             return message;
 
         }
         Messages message = new Messages ();
         message.setMessage ("key not found");
         message.setEstatus ( "Process no completed" );
-        map.clear ();
         return message;
     }
 
@@ -94,6 +92,7 @@ public class BookRepository {
         message.setMessage ("Record deleted successfully");
         message.setEstatus ( "Process completed" );
         repoSaver (map);
+        map.clear ();
         return message;
     }
 
@@ -112,18 +111,20 @@ public class BookRepository {
 
     public void repoSaver (ConcurrentHashMap<Integer, Book> map) {
 
-        Book [] arrayBook = new Book[map.size ()];
+
         String jsonString = "";
 
-        for (int i = 0; i <arrayBook.length ; i++) {
-            arrayBook [i] = map.get ( i );
-            System.out.println ( map.get ( i ) );
+        Set <Integer> ids = map.keySet ();
+        ArrayList <Book> bookList = new ArrayList <> (  );
+        for(Integer id : ids){
+            bookList.add (map.get(id).clone ()) ;
         }
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable( SerializationFeature.INDENT_OUTPUT);
+
             try {
-                jsonString = mapper.writeValueAsString ( arrayBook );
+                jsonString = mapper.writeValueAsString ( bookList );
             } catch (JsonProcessingException e) {
                 e.printStackTrace ( );
             }

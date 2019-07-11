@@ -1,15 +1,22 @@
-[ null, {
+[ {
   "id" : 1,
-  "title" : "ads",
-  "description" : "ADS",
-  "isbn" : "dsasda",
-  "author" : "SAD",
-  "publisher" : ""
+  "title" : "A",
+  "description" : "A",
+  "isbn" : "A",
+  "author" : "A",
+  "publisher" : "A"
 }, {
-  "id" : 2,
-  "title" : "adfsdfsa",
-  "description" : "fdsadfs",
-  "isbn" : "dfsadfsa",
-  "author" : "fdsaadfs",
-  "publisher" : "fdsadfsa"
+  "id" : 6,
+  "title" : "dsfa",
+  "description" : "dfsa",
+  "isbn" : "dfs",
+  "author" : "dsf",
+  "publisher" : "sadf"
+}, {
+  "id" : 8,
+  "title" : "Lucas",
+  "description" : "Lucas",
+  "isbn" : "Lucas",
+  "author" : "Luacs",
+  "publisher" : "Lucas"
 } ]
