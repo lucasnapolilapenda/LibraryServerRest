@@ -1,0 +1,15 @@
+[ null, {
+  "id" : 1,
+  "title" : "ads",
+  "description" : "ADS",
+  "isbn" : "dsasda",
+  "author" : "SAD",
+  "publisher" : ""
+}, {
+  "id" : 2,
+  "title" : "adfsdfsa",
+  "description" : "fdsadfs",
+  "isbn" : "dfsadfsa",
+  "author" : "fdsaadfs",
+  "publisher" : "fdsadfsa"
+} ]
